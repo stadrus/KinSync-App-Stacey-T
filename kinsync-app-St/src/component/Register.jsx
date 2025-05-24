@@ -35,10 +35,11 @@ const Register = () => {
    
     
     const handleSubmit = () => {
-        if (userData.password !== userData.correctPassword){
-            alert ("Passwords do not match");
-        } else {
+        if (name === "" || email === "" || password === ""){
+            alert ("Registration Complete");
             navigate('/Login');
+        } else {
+            alert ("Profile Exisit!")
         }
     }
     return (
