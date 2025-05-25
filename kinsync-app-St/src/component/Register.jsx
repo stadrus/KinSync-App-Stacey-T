@@ -3,10 +3,7 @@ import { useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
 
 
-
-
-
-const Register = () => {
+function Register () {
     // let data = JSON.stringify(user);
   
     //create user inputs using State// 
