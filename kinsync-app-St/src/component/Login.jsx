@@ -1,19 +1,23 @@
-import { useState } from "react";
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 const Login = () => {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = setSate('');
+    
     const navigate = useNavigate();
     
-   localStorage.getItem('isLoggedin', true);
-    
+    // const storedUser = JSON.parse(localStorage.getItem('userData'))
+    // console.log(storedUser);
+    const storedUser = JSON.parse(localStorage.getItem('userData'));
+    console.log(storedUser);
+
     const handleSubmit = () => {
-        if (userName === 'name' && password === 'password'){
-            console.log("Login Successful");
+        if (email === "" && password === ""){
+            alert ("Login Successful");
             navigate('/Dashboard');
         } else{
-            console.log("Email or password is invalid");
+            alert("Email or password is invalid");
         }
     };
 
