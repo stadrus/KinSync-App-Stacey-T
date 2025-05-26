@@ -22,7 +22,7 @@ function EventList () {
                 <button onClick={()=>{setList([...list, {id: nextId++, event: event }])}}>Add</button>
                 </form>
                 <ol>
-                    {list.map(list => (<li key={list.id}>{list.event}</li>))}
+                    {list.map(list =>(<li key={list.id}>{list.event}</li>))}
                 </ol>
             </div>
         </>
