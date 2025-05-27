@@ -1,8 +1,8 @@
 import EventList from "./EventList";
 
 const Content = () => {
-    // const storedEvent = JSON.parse(localStorage.getItem('eventList'));
-    // console.log(storedEvent); 
+    const storedEvent = JSON.parse(localStorage.getItem('eventList'));
+    console.log(storedEvent); 
 
     return (
         <div className="content">

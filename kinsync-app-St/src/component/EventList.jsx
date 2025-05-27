@@ -23,7 +23,8 @@ function EventList () {
         setDate(e.target.value);
     }
     //used spreated operator to give each event a unique id when added to the list reduce dev console errors. 
-   function handleSubmit () {
+   function handleSubmit (e) {
+        e.preventDefault();
         setList([
             ...list,
             {id:nextId++, name:setEvent}
@@ -52,7 +53,7 @@ function EventList () {
                     {list.map(list => (
                         <li className="event" key={event.id}>{title}<br></br>{details}<>{date}</>
                         <button type="button" onClick={handleDelete}>Delete</button>
-                        <button type="button">Remove</button> </li>
+                        <button type="button">Edit</button> </li>
                     ))}
                 </ul>
             </div>
