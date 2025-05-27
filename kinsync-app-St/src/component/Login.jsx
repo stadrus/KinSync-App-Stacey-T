@@ -5,8 +5,8 @@ function Login () {
     const navigate = useNavigate();
     
     const storedUser = JSON.parse(localStorage.getItem('userData'));
-    console.log(storedUser);
-
+    console.log(storedUser);  
+    
     const handleSubmit = () => {
         if (storedUser.email === "" && storedUser.password === ""){
             alert ("Login Successful");
@@ -23,7 +23,7 @@ function Login () {
     return (
         <div>
             <h1>Login</h1> 
-            <form onSubmit={handleSubmit}>
+            <form id="login-form" onSubmit={handleSubmit}>
                 <input type="email" placeholder="Enter Email"/>
                 <input type="password" placeholder="Enter Password"/>
                 <button type="submit">Submit</button><br></br>

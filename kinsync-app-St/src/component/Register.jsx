@@ -2,7 +2,6 @@ import images from '../images/profile.svg'
 import { useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
 
-
 function Register () {
     // let data = JSON.stringify(user);
   
@@ -55,7 +54,7 @@ function Register () {
         <div>
             <h1>Register Today!</h1>
             <img className="blankpic" src={images} alt="blank user profile"></img>
-            <form onSubmit={handleSubmit}>
+            <form id="register-form" onSubmit={handleSubmit}>
                 <input type="text" placeholder='Enter Name' value={name} onChange={handleName}/><br></br>
                 <input type="email" placeholder='Enter Email' value={email} onChange= {handleEmail}/><br>
                 </br>
