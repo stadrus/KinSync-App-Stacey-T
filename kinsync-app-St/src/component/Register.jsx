@@ -12,11 +12,10 @@ function Register () {
     const [password,setPassword] = useState('');
 
     // const storedUser = JSON.parse(localStorage.getItem(userData));
-    // console.log(storedUser);
-    // //moved to login component//
+    // console.log(storedUser);//moved to login component//
 
-    //create useState for userData to add new user in local storage//
-    const [userData, setUserData] = useState([]); //holds users data
+    //create useState for userData to add new user in local storage in an array//
+    const [userData, setUserData] = useState([]); 
     
     // localStorage.setItem('user', setUserData);
      
@@ -28,7 +27,6 @@ function Register () {
    
 
     //create onChange elements for each key e.targt.value setStateName(key)
-    
     const handleName = (e) =>{
         setName(e.target.value);
     }
@@ -38,12 +36,12 @@ function Register () {
      const handlePassword = (e) =>{
         setPassword(e.target.value);
     }
-
+    //useNavigate will navigate user to Login once registration in complete.//
     const navigate = useNavigate();
-   
+   //submit button should create a new user everytime someone registers an account//
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newUser = {name, email, password}
+        const newUser = {name, email, password}//should produce a new user//
         setUserData(prev=> [...prev, newUser]);
         if (name === '' || email === '' || password === ''){
             alert ("Profile in use.")
@@ -68,10 +66,9 @@ function Register () {
             <h1>Register Today!</h1>
             <img className="blankpic" src={images} alt="blank user profile"></img>
             <form id="register-form" onSubmit={handleSubmit}>
-                <input type="text" id="name-user" placeholder='Enter Name' value={name} onChange={handleName}/><br></br>
-                <input id="email" placeholder='Enter Email' type="email"  value={email} onChange= {handleEmail}/><br>
-                </br>
-                <input id="current-password" placeholder="Enter Password" type="password"  value={password} onChange={handlePassword}/><br></br>
+                <input id="name-user" placeholder='Enter Name' type="text" value={name} onChange={handleName}/><br></br>
+                <input id="email" placeholder='Enter Email' type="email"  value={email} onChange= {handleEmail}/><br></br>
+                <input id="current-password" placeholder="Enter Password" type="password" value={password} onChange={handlePassword}/><br></br>
                 <button type="submit">Submit</button>
             </form>   
         </div>

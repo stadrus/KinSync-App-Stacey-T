@@ -13,10 +13,11 @@ function EventList () {
     
     // const [event, setEvent] =useState([{id, title, details, date}]);
     // const [list, setList] = useState([]);
-    
+    const [event, setEvent] = useState(() =>{
     const storedEvent = JSON.parse(localStorage.getItem('eventData'));
+    return storedEvent ? parseInt(storedEvent) : event;
+    });
     console.log(storedEvent); //removed from Content.jsx to here. 
-
     //create a state to be used for local storage. Removed id, title, details. and date. these have already been declaried as states. 
     const [eventData, setEventData] = useState([])
 

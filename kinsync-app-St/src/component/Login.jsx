@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router";
 
-
 function Login () {
-    const navigate = useNavigate();
     
     const storedUser = JSON.parse(localStorage.getItem('userData'));
-    console.log(storedUser);  
-    
+    console.log(storedUser);
+   
+    const navigate = useNavigate();
+
+    //create a function that alerts user of login status based on the stored email and password matching the localstorage data.//
     const handleSubmit = () => {
         if (storedUser.email === "" && storedUser.password === ""){
             alert ("Login Successful");
