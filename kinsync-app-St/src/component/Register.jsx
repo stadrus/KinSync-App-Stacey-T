@@ -16,7 +16,7 @@ function Register () {
     // //moved to login component//
 
     //create useState for userData to add new user in local storage//
-    const [userData, setUserData] = useState({name, email, password}); //holds users data
+    const [userData, setUserData] = useState([]); //holds users data
     
     // localStorage.setItem('user', setUserData);
      
@@ -43,28 +43,26 @@ function Register () {
    
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (userData.name === '' || userData.email === '' || userData.password === ''){
-            alert ("Registration Complete");
-        } else {
+        const newUser = {name, email, password}
+        setUserData(prev=> [...prev, newUser]);
+        if (name === '' || email === '' || password === ''){
             alert ("Profile in use.")
+        } else {
+            alert ("Registration Complete");
         }
-        
+       
         fetch("https://reqres.in/api/users", {
-            method: "POST",
-            headers: {
-                "x-api-key": "reqres-free-v1",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(userData)
+        method: "POST",
+        headers: {
+            "x-api-key": "reqres-free-v1",
+            "Content-Type": "application/json"
+        },
+            body: JSON.stringify(newUser)
         })
         .then(response => response.json())
         .then(data => console.log(data));
-        
         navigate('/Login');
-    
     }
-
-
     return (
         <div>
             <h1>Register Today!</h1>

@@ -38,16 +38,16 @@ function EventList () {
    const handleSubmit = (e) => {
         e.preventDefault();
         for (let i =1; i <10; i++){
-            const newEvent = {id, title, details, date}
+            const newEvent = {title, details, date}
             setEventData([...eventData, newEvent]);
 
         }
     };
 //used filter()to delete items from the list once added. 
     const handleDelete = () => {
-        const deletedEvent = eventData.filter(event => event.id !== id);
+        const deletedEvent = eventData.filter(newEvent => newEvent.id !== id);
         setEventData(deletedEvent);
-        console.log('Deleted event:', deletedEvent);
+        // console.log('Deleted event:', newEvent);
     }
 
     return (
@@ -62,9 +62,9 @@ function EventList () {
                     <input type="date" id="event-date" onChange={handleDate}/>
                     <button type="submit">Add</button>
                     <ul>
-                        {eventData.map(event => (
-                            <li className="event" key={event.id}>{event.title}{event.details}{event.date}<></>
-                            <button type="button" onClick={() => handleDelete(event.id)}>Delete</button>
+                        {eventData.map(newEvent => (
+                            <li className="event" key={newEvent.id}>{newEvent.title}{newEvent.details}{newEvent.date}<></>
+                            <button type="button" onClick={() => handleDelete(newEvent.id)}>Delete</button>
                             <button type="button">Edit</button> </li>
                         ))}
                     </ul>
