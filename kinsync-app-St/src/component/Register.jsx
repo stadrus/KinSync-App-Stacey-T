@@ -13,7 +13,7 @@ function Register () {
 
     // const storedUser = JSON.parse(localStorage.getItem(userData));
     // console.log(storedUser);//moved to login component//
-
+    
     //create useState for userData to add new user in local storage in an array//
     const [userData, setUserData] = useState([]); 
     
@@ -43,6 +43,7 @@ function Register () {
         e.preventDefault();
         const newUser = {name, email, password}//should produce a new user//
         setUserData(prev=> [...prev, newUser]);
+        
         if (name === '' || email === '' || password === ''){
             alert ("Profile in use.")
         } else {

@@ -1,9 +1,11 @@
-import EventList from "./EventList";
 import images from "../images/userpic.svg"
+import EventList from "./EventList";
 
 const Content = () => {
-    // const storedEvent = JSON.parse(localStorage.getItem('eventList'));
+
+    // const storedEvent = JSON.parse(localStorage.getItem('eventData'));
     // console.log(storedEvent); 
+    
     return (
         <div className="content">
             <header>

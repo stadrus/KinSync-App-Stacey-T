@@ -1,7 +1,15 @@
 import { useNavigate } from "react-router";
+// import { useEffect } from "react"; 
 
 function Login () {
     
+    // useEffect(() =>{
+    //       const data = localStorage.getItem('userData');
+    //       if(data){
+    //           setUserData(JSON.parse(data));
+    //       }
+    // }, []);
+
     const storedUser = JSON.parse(localStorage.getItem('userData'));
     console.log(storedUser);
    
@@ -9,11 +17,11 @@ function Login () {
 
     //create a function that alerts user of login status based on the stored email and password matching the localstorage data.//
     const handleSubmit = () => {
-        if (storedUser.email === "" && storedUser.password === ""){
+        if (!storedUser.email === "" && !storedUser.password === ""){
+            alert("Email or password is invalid");
+        } else{
             alert ("Login Successful");
             navigate('/Dashboard');
-        } else{
-            alert("Email or password is invalid");
         }
     };
 
