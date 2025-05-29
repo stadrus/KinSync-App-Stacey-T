@@ -7,19 +7,21 @@ const EventList = () => {
         {
             "id": 0,
             "title": "Nana's 95th",
-            "details": "At Welcome Park"
+            "details": "At Welcome Park",
+            "date": "",
 
         },
         {
             "id": 1,
             "title": "Family Game Night",
-            "details": "Main Event"
-
+            "details": "Main Event",
+            "date":"",
         },
         {
             "id": 2,
             "title": "Family Reunion",
             "details": "At Welcome Park",
+            "date":"",
         },
         ]
     ]

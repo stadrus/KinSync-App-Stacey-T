@@ -1,5 +1,6 @@
 import images from "../images/userpic.svg"
-import EventList from "./EventList";
+import EventDetails from "./EventDetails";
+
 
 const Content = () => {
 
@@ -12,7 +13,7 @@ const Content = () => {
                 <img className="userpic" src={images} alt="ritta"></img>
             </header>
             <h2>Checkout these events!</h2>
-            <EventList />
+            <EventDetails />
         </div>
     );
 };
