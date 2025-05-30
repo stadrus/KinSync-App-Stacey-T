@@ -9,23 +9,40 @@ import EditRow from "./EditRow";
 const EventDetails = () =>{
     const [events, setEvents] = useState(data);
     const [addFormData, setAddFormData] =useState({
-    title:'',
-    details:'',
-    date:''
+    title:"",
+    details:"",
+    date:"",
     });
 
-    const [editEvent, setEditEvent] = useState(null);
+    const [editFormData, setEditFormData] = useState({
+    title:"",
+    details:"",
+    date:"",
+    });
+
+    const [editEventId, setEditEventId] = useState(null);
 
     const handleAddFormChange = (e) =>{
     e.preventDefault();
         
-    const fieldName = e.target.getAttributes('title');
+    const fieldName = e.target.getAttribute("name");
     const fieldValue = e.target.value;
         
-    const newFormData = { ...addFormData};
+    const newFormData = { ...addFormData };
     newFormData[fieldName] = fieldValue;
     
     setAddFormData(newFormData);
+    };
+
+    const handleEditFormChange = (e) =>{
+        e.preventDefault();
+        const fieldName = e.target.getAttribute("name");
+        const fieldValue = e.target.value;
+
+        const newFormData = { ...editFormData };
+        newFormData[fieldName] = fieldValue;
+        
+        setEditFormData(newFormData); 
     };
     
     const handleAddFormSubmit = (e) =>{
@@ -38,16 +55,51 @@ const EventDetails = () =>{
         data: addFormData.date,
         };
         const newEvents = [...events, newEvent];
-            setEvents(newEvents);
+        setEvents(newEvents);
     };
+
+    const handleEditFormSubmit = (e) =>{
+        e.preventDefault();
+
+    const editedEvent ={
+        id: editEventId,
+        title: editFormData.title,
+        details: editFormData.details,
+        data: editFormData.date,
+        };
+
+        const newEvents = [...events];
+        const index = events.findIndex((event)=>event.id === editEventId);
+
+        newEvents[index] = editedEvent;
+        setEvents(newEvents);
+        setEditEventId(null);
+    };
+    
+
     const handleEditClick = (e, event) =>{
         e.preventDefault();
-        setEditEvent(event.id);
-    }
+        setEditEventId(event.id);
+        const formValues = {
+        title: event.title,
+        details: event.details,
+        date: event.date,
+        }
+        setEditFormData(formValues);
+    };
+    const handleCancelClick = () =>{
+        setEditEventId(null);
+    };
+    const handleDeleteClick =(eventsId) =>{
+        const newEvents = [...events];
+        const index = events.findIndex((events)=> events.id === eventsId);
+        newEvents.splice(index, 1);
+        setEvents(newEvents);
+    };
 
     return (
         <div className="event-container">
-            <form>
+            <form onSubmit={handleEditFormSubmit}>
                 <table>
                     <thead>
                         <tr>
@@ -60,14 +112,16 @@ const EventDetails = () =>{
                     <tbody>
                     {events.map((event) =>(
                         <Fragment>
-                        {editEvent === event.id ? ( <EditRow />) : (<ReadRow event={event} handleEditClick = {handleEditClick}/>)}
+                        {editEventId === event.id ? ( <EditRow editFormData ={editFormData} handleEditFormChange={handleEditFormChange}
+                        handleCancelClick={handleCancelClick}
+                        />) : (<ReadRow event={event} handleEditClick = {handleEditClick} handleDeleteClick ={handleDeleteClick}/>)}
                         </Fragment> 
                     ))}
                     </tbody>
                 </table>
             </form>
             <h2>Add Event</h2>
-            <form onSubmit={handleAddFormSubmit}>
+            <form className= "add-button" onSubmit={handleAddFormSubmit}>
                 <input 
                     type="text"
                     name="title"
@@ -86,7 +140,7 @@ const EventDetails = () =>{
                     required="required"
                     placeholder="Enter a date"
                     onChange = {handleAddFormChange}/>
-                <button type="submit">Add</button>
+                <button type='submit'>Add</button>
             </form>
         </div>
     );
