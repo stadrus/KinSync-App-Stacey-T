@@ -1,4 +1,3 @@
-
 import { HashRouter, Link, Routes, Route } from 'react-router'
 import './App.css'
 import Header from './component/Header'
@@ -10,7 +9,6 @@ import Register from './component/Register'
 import Dashboard from './component/Dashboard'
 import Content from './component/Content'
 import EventList from './component/EventList'
-
 
 function App() {
   

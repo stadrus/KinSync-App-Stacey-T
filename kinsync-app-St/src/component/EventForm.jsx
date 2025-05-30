@@ -27,8 +27,9 @@ import { nanoid } from "nanoid";
             title: addFormData.title,
             details: addFormData.details,
             data: addFormData.date
-        }
-    }
+        };
+        const newEvent = [...E]
+    };
 
     return (
         <>

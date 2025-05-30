@@ -1,63 +1,93 @@
 import data from "../data/event.json";
-import { useState } from "react";
-import EventForm from "./EventForm";
-
+import { Fragment, useState } from "react";
+import { nanoid } from "nanoid";
+import ReadRow from "./ReadRow";
+import EditRow from "./EditRow";
 
 
 //Using a table I will display the event details.//
 const EventDetails = () =>{
     const [events, setEvents] = useState(data);
-    // const { eventsId } = useParams();
+    const [addFormData, setAddFormData] =useState({
+    title:'',
+    details:'',
+    date:''
+    });
 
-    // const events = 
-    //     [
-    //     {
-    //         "id": 0,
-    //         "title": "Nana's 95th",
-    //         "details": "At Welcome Park",
-    //         "date": "",
+    const [editEvent, setEditEvent] = useState(null);
 
-    //     },
-    //     {
-    //         "id": 1,
-    //         "title": "Family Game Night",
-    //         "details": "Main Event",
-    //         "date":"",
-    //     },
-    //     {
-    //         "id": 2,
-    //         "title": "Family Reunion",
-    //         "details": "At Welcome Park",
-    //         "date":"",
-    //     },
-    //     ]
+    const handleAddFormChange = (e) =>{
+    e.preventDefault();
+        
+    const fieldName = e.target.getAttributes('title');
+    const fieldValue = e.target.value;
+        
+    const newFormData = { ...addFormData};
+    newFormData[fieldName] = fieldValue;
     
+    setAddFormData(newFormData);
+    };
     
-    //     const event = event.find((event) => event.id === parseInt(eventsId));
+    const handleAddFormSubmit = (e) =>{
+    e.preventDefault();
 
-    //     if(!event){
-    //         return <p> You do not have any events yet...</p>;
-    //     }
+    const newEvent ={
+        id: nanoid(),
+        title: addFormData.title,
+        details: addFormData.details,
+        data: addFormData.date,
+        };
+        const newEvents = [...events, newEvent];
+            setEvents(newEvents);
+    };
+    const handleEditClick = (e, event) =>{
+        e.preventDefault();
+        setEditEvent(event.id);
+    }
+
     return (
         <div className="event-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Event Title</th>
-                        <th>Event Details</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {events.map((event) =>(  
-                    <tr>
-                    <td>{event.title}</td>
-                    <td>{event.details}</td>
-                    <td>{event.date}</td>
-                    </tr>
+            <form>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Event Title</th>
+                            <th>Event Details</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {events.map((event) =>(
+                        <Fragment>
+                        {editEvent === event.id ? ( <EditRow />) : (<ReadRow event={event} handleEditClick = {handleEditClick}/>)}
+                        </Fragment> 
                     ))}
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </form>
+            <h2>Add Event</h2>
+            <form onSubmit={handleAddFormSubmit}>
+                <input 
+                    type="text"
+                    name="title"
+                    required="required"
+                    placeholder="Enter a event title"
+                    onChange = {handleAddFormChange}/>
+                <input 
+                    type="text"
+                    name="details"
+                    required="required"
+                    placeholder="Enter event details"
+                    onChange = {handleAddFormChange}/>
+                <input 
+                    type="date"
+                    name="date"
+                    required="required"
+                    placeholder="Enter a date"
+                    onChange = {handleAddFormChange}/>
+                <button type="submit">Add</button>
+            </form>
         </div>
     );
 
