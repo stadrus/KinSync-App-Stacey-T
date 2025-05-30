@@ -5,7 +5,6 @@ const Dashboard = () => {
         <div className="dashboard">
             <header></header>
             <Content />
-            
         </div>
     )
 };

@@ -1,5 +1,5 @@
 import images from "../images/userpic.svg"
-import EventDetails from "./EventDetails";
+import EventDetails from "../event-table/EventDetails";
 
 
 const Content = () => {

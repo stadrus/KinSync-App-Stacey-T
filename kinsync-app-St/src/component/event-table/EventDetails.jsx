@@ -1,4 +1,4 @@
-import data from "../data/event.json";
+import data from "../../data/event.json";
 import { Fragment, useState } from "react";
 import { nanoid } from "nanoid";
 import ReadRow from "./ReadRow";
