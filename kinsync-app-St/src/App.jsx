@@ -8,11 +8,9 @@ import Login from './component/Login'
 import Register from './component/Register'
 import Dashboard from './component/user-profile/Dashboard'
 import Content from './component/user-profile/Content'
-import EventList from './component/EventList'
+import EventList from './component/event-table/EventList'
 
 function App() {
-  
-
   return (
     <>
       <HashRouter>

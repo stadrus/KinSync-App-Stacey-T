@@ -121,7 +121,7 @@ const EventDetails = () =>{
                 </table>
             </form>
             <h2>Add Event</h2>
-            <form className= "add-button" onSubmit={handleAddFormSubmit}>
+            <form onSubmit={handleAddFormSubmit}>
                 <input 
                     type="text"
                     name="title"
