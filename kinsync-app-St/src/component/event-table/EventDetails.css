@@ -1,0 +1,34 @@
+.event-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th,
+td{
+    border: 1px ;
+    text-align: left;
+    padding: 8px;
+    font-size: 32px;
+}
+th{
+    background-color:rgba(255, 155, 133, 1);
+}
+td{
+    background-color: rgba(242, 163, 55, 1);
+}
+form {
+    display: flex;
+    gap: 5px;
+}
+form td:last-child{
+    display: flex;
+    justify-content: space-evenly;
+}
+form * {
+    font-size: 28px;
+}

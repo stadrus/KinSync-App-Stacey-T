@@ -1,23 +1,19 @@
-
-import { BrowserRouter, Link, Routes, Route } from 'react-router'
+import { HashRouter, Link, Routes, Route } from 'react-router'
 import './App.css'
 import Header from './component/Header'
 import Footer from './component/Footer'
 import Home from './component/Home'
-import About from './component/About'
+import About from './component/about/About'
 import Login from './component/Login'
 import Register from './component/Register'
-import Dashboard from './component/Dashboard'
-import Content from './component/Content'
-import EventList from './component/EventList'
-
+import Dashboard from './component/user-profile/Dashboard'
+import Content from './component/user-profile/Content'
+import EventList from './component/event-table/EventList'
 
 function App() {
-  
-
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <div>
           <Header />
             <nav>
@@ -34,7 +30,7 @@ function App() {
             </Routes>
           <Footer />
         </div>
-      </BrowserRouter> 
+      </HashRouter> 
     </>
   )
 }

@@ -1,18 +1,27 @@
 import { useNavigate } from "react-router";
-
+// import { useEffect } from "react"; 
 
 function Login () {
-    const navigate = useNavigate();
     
+    // useEffect(() =>{
+    //       const data = localStorage.getItem('userData');
+    //       if(data){
+    //           setUserData(JSON.parse(data));
+    //       }
+    // }, []);
+
     const storedUser = JSON.parse(localStorage.getItem('userData'));
     console.log(storedUser);
+   
+    const navigate = useNavigate();
 
+    //create a function that alerts user of login status based on the stored email and password matching the localstorage data.//
     const handleSubmit = () => {
-        if (storedUser.email === "" && storedUser.password === ""){
+        if (!storedUser.email === "" && !storedUser.password === ""){
+            alert("Email or password is invalid");
+        } else{
             alert ("Login Successful");
             navigate('/Dashboard');
-        } else{
-            alert("Email or password is invalid");
         }
     };
 
@@ -23,7 +32,7 @@ function Login () {
     return (
         <div>
             <h1>Login</h1> 
-            <form onSubmit={handleSubmit}>
+            <form id="login-form" onSubmit={handleSubmit}>
                 <input type="email" placeholder="Enter Email"/>
                 <input type="password" placeholder="Enter Password"/>
                 <button type="submit">Submit</button><br></br>

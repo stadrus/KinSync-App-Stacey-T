@@ -1,0 +1,15 @@
+body{
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+h1{
+  text-align: center;
+}
+form{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: small;
+}
+.counter{
+  text-align: center;
+}
